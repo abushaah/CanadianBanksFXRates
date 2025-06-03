@@ -13,8 +13,10 @@ function App() {
   return (
     <div>
       <h1>Frontend (React)</h1>
-      {/* <pre>{JSON.stringify(data, null, 2)}</pre> */}
+      <pre>{JSON.stringify(data, null, 2)}</pre>
       <p>This is my app setup</p>
+      <p>abc</p>
+      <p>yay it worksss!</p>
     </div>
   );
 }

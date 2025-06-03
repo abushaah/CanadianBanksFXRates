@@ -7,6 +7,24 @@ services:
     volumes:
       - ./backend:/app
       - /app/node_modules
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=mydb
+    depends_on:
+      - db
+  db:
+    image: postgres:14
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=mydb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
   frontend:
     build: ./frontend
     ports:
@@ -18,3 +36,5 @@ services:
       - CHOKIDAR_USEPOLLING=true
     stdin_open: true
     tty: true
+volumes:
+  pgdata:
